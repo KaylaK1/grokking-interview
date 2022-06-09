@@ -1,8 +1,14 @@
 /**
  * Prints out each level of the tree from left to right
+ * Example
+ * Input: 12
+ *      7    1
+ *    9    10  5
+ *
+ * Output: [[12],
+ *          [7,1],
+ *          [9,10,5]]
  */
-import { Queue } from "./Queue";
-
 class TreeNode {
   constructor(value) {
     this.value = value;
@@ -16,8 +22,7 @@ function traverse(root) {
   if (root === null) {
     return result;
   }
-
-  const queue = new Queue;
+  const queue = [];
   // Start by pushing the root to the queue
   queue.push(root);
   // Check the branches of each node. If they are not null.
@@ -32,7 +37,7 @@ function traverse(root) {
     for (let i = 0; i < levelSize; i++){
       currentNode = queue.shift();
       // add the node to the current level
-      currentLevel.push(currentNode.val);
+      currentLevel.push(currentNode.value);
       // insert the children of the node into the queue
       if (currentNode.left !== null) {
         queue.push(currentNode.left);
@@ -43,6 +48,14 @@ function traverse(root) {
     }
     result.push(currentLevel);
   }
-
   return result;
 }
+
+const root = new TreeNode(12);
+root.left = new TreeNode(7);
+root.right = new TreeNode(1);
+root.left.left = new TreeNode(9);
+root.right.left = new TreeNode(10);
+root.right.right = new TreeNode(5);
+
+console.log(traverse(root));
