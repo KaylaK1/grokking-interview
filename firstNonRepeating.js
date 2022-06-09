@@ -3,21 +3,27 @@
  * output: returns the index of the strings first non-repeating character
  * or -1
  */
+ function firstNonRepeatingCharacter(string) {
+	const hashBoi = {};
 
-function firstNonRepeat(string) {
-    const hashmap = {};
+	// for (const character of string) {
+	// 	if (!(character in hashBoi)) hashBoi[character] = 0;
+	// 	hashBoi[character]++;
+	// }
+	for (const character of string) {
+		if (!(character in hashBoi)) {
+			hashBoi[character] = 0;
+		} else {
+			hashBoi[character]++;
+		}
+	}
 
-    for (const char of string) {
-        if ((!char in hashmap)) {
-            hashmap[char] = 0;
-        } else {
-            hashmap[char]++;
-        }
-    }
+	for (let idx = 0; idx < string.length; idx++) {
+		const character = string[idx];
+		if (hashBoi[character] === 0) return idx;
+	}
 
-    for (let idx = 0; idx < string.length; idx++) {
-        const character = string[idx];
-        if(hashBoi[character] === 0) return idx;
-    }
-    return -1;
+  return -1;
 }
+
+console.log(firstNonRepeatingCharacter("aabc"));
