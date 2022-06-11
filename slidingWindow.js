@@ -65,7 +65,7 @@ function smallestSubArray(array, S) {
     return minimumLength;
 
   }
-// console.log(smallestSubArray([2, 1, 5, 2, 3, 2], S=7));
+// console.log(smallestSubArray([1], S=1));
  //Output: 2
  //Explanation: The smallest subarray with a sum greater than or equal to '7' is [5, 2].
 
@@ -104,4 +104,4 @@ function longestSubstringDistinct(str, K) {
   return maxLength;
 }
 
-console.log(longestSubstringDistinct("cbbebi", K=3));
+//console.log(longestSubstringDistinct("cbbebi", K=3));
