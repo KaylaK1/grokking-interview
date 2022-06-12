@@ -61,9 +61,40 @@ class Trie {
         console.log("'" + key + "' inserted");
     }
 
-    // Search for a given key in Trie
-    search(key) {
-        return false
+    /** 
+     * Search for a given key in Trie
+     * Case 1: Word doesn't exist
+     * Case 2: Word is a substring of another word 
+     *  won't be found because its isEndWord value of the last char 
+     *  is set to false -> 
+     * Case 3: Word exists as a path from root node to end node and/or node
+     *  marked as an end -> successful search case
+    */     
+   search(key) {
+       // Case 1
+       if (key === null) {
+           return false;
+       }
+
+       key = key.toLowerCase();
+       let currentNode = this.root;
+       let index = 0;
+
+       // Iterate the Trie with the given char index,
+       // If the trie is null at any point we return false
+       // Returns true if we reach leafNode and have traversed the
+       // Trie based on the length of the key
+       for (const level = 0; level < key.length; level++) {
+           index = this.getIndex(key[level]);
+           if (currentNode.children[index] === null) {
+               return false;
+           }
+           currentNode = currentNode.children[index];
+       }
+       if (currentNode !== null && currentNode.isEndWord) {
+           return true;
+       }
+       return false;
     }
     
     // delete a key
