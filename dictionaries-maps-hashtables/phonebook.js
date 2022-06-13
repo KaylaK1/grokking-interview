@@ -31,7 +31,7 @@ function processData(input) {
   // add numEntries to phoneBook
   while (index <= numEntries) {
     let [name, number] = inputArray[index].split(' ');
-    phoneBook.set(name, number)
+    phoneBook.set(name, number);
     index += 1;
   }
 

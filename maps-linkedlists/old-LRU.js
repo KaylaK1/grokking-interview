@@ -120,12 +120,12 @@ class Cache {
   }
 }
 
-// const cacheBoi = new Cache(2);
-// cacheBoi.put('hello', 'world');
-// cacheBoi.debug();
+// const cache = new Cache(2);
+// cache.put('hello', 'world');
+// cache.debug();
 
-// cacheBoi.delete('hello');
-// cacheBoi.debug();
-// cacheBoi.put('hello', 'world');
-// console.log('Get test: ',cacheBoi.get('hello'));
-// cacheBoi.debug();
+// cache.delete('hello');
+// cache.debug();
+// cache.put('hello', 'world');
+// console.log('Get test: ',cache.get('hello'));
+// cache.debug();
