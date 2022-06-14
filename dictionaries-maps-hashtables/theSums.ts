@@ -99,5 +99,5 @@ function threeNumberSum(array: number[], targetSum: number) {
 //console.log(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0));
 
 /** Four Number Sum
- *
+ *creating
  */
