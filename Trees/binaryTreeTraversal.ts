@@ -1,7 +1,11 @@
 /**
  * Binary Tree Traversals Recursively
  */
-class TreeNode {
+ // https://www.typescriptlang.org/docs/handbook/2/functions.html
+
+type nodeCallback = (node: TreeNode) => any;
+
+export class TreeNode {
   value: number;
   left: TreeNode | null;
   right: TreeNode | null;
@@ -13,11 +17,11 @@ class TreeNode {
   }
 
   // inOrderTraversal - visits the left branch, then the current node, then the right branch
-  // On a BST, this visits the nodes in ascending order.
-  inOrderTraversal(node: TreeNode | null = null) {
+  // On a BST, this visits the nodes in ascending order. Visits nodes from left to right
+  inOrderTraversal(node: TreeNode | null = null, callback?: (node: TreeNode) => void) {
     if (node !== null) {
       this.inOrderTraversal(node.left);
-      this.visit(node);
+      callback?.(node); // not sure if ? is good practice
       this.inOrderTraversal(node.right);
     }
   }
@@ -41,9 +45,20 @@ class TreeNode {
       this.visit(node);
     }
   }
+
   // Visit prints out the value
   visit(node: TreeNode) {
     console.log(node.value);
+  }
+
+  // Calls traversals on a node
+  traversalTests(node: TreeNode) {
+    console.log('InOrderTraversal: ');
+    node.inOrderTraversal(node, this.visit);
+    console.log('PreOrderTraversal: ');
+    node.preOrderTraversal(node);
+    console.log('PostOrderTraversal: ');
+    node.postOrderTraversal(node);
   }
 }
 
@@ -56,9 +71,4 @@ root.right.left.left = new TreeNode(9);
 root.right.left.right = new TreeNode(18);
 root.right.right = new TreeNode(7);
 
-console.log('InOrderTraversal: ');
-root.inOrderTraversal(root);
-console.log('PreOrderTraversal: ');
-root.preOrderTraversal(root);
-console.log('PostOrderTraversal: ');
-root.postOrderTraversal(root);
+//root.traversalTests(root);
