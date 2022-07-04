@@ -71,4 +71,4 @@ root.right.left.left = new TreeNode(9);
 root.right.left.right = new TreeNode(18);
 root.right.right = new TreeNode(7);
 
-//root.traversalTests(root);
+root.traversalTests(root);
